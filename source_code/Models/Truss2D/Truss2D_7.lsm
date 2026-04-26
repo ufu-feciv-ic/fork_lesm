@@ -1,0 +1,154 @@
+NEUTRAL-FORMAT FILE
+This file stores all information about a structure model that can be read and
+loaded by the LESM (Linear Elements Structure Model) program.
+To modify the model, edit only the data below the %TAGS
+
+-----------------------------------------------------------------------
+Specify version number: 'X.X'
+%HEADER.VERSION
+1.1
+
+-----------------------------------------------------------------------
+Specify analysis model type: 'TRUSS2D', 'FRAME2D', 'Grillage', 'TRUSS3D' OR 'FRAME3D'
+%HEADER.ANALYSIS
+'TRUSS2D'
+
+-----------------------------------------------------------------------
+Provide nodal coordinates
+First line: Total number of nodes
+Following lines: Node ID, coord_X [m], coord_Y [m], coord_Z [m]
+%NODE.COORD
+19
+1     -3  0  0
+2     3  0  0
+3     -2.250000e+00  3  0
+4     2.250000e+00  3  0
+5     -1.500000e+00  6  0
+6     1.500000e+00  6  0
+7     -7.500000e-01  9  0
+8     7.500000e-01  9  0
+9     0  12  0
+10     -6  0  0
+11     6  0  0
+12     -9  0  0
+13     9  0  0
+14     -6.750000e+00  3  0
+15     6.750000e+00  3  0
+16     -4.500000e+00  6  0
+17     4.500000e+00  6  0
+18     -2.250000e+00  9  0
+19     2.250000e+00  9  0
+
+-----------------------------------------------------------------------
+Specify essential boundary conditions (support conditions)
+First line: Total number of nodes
+Following lines: Node ID, ebc_dX, ebc_dY, ebc_dZ, ebc_rX, ebc_rY, ebc_rZ
+ebc = 0 --> Free degree-of-freedom
+ebc = 1 --> Fixed degree-of-freedom
+%NODE.SUPPORT
+19
+1     1  1  0  0  0  0
+2     1  1  0  0  0  0
+3     0  0  0  0  0  0
+4     0  0  0  0  0  0
+5     0  0  0  0  0  0
+6     0  0  0  0  0  0
+7     0  0  0  0  0  0
+8     0  0  0  0  0  0
+9     0  0  0  0  0  0
+10     0  0  0  0  0  0
+11     0  0  0  0  0  0
+12     1  1  0  0  0  0
+13     1  1  0  0  0  0
+14     0  0  0  0  0  0
+15     0  0  0  0  0  0
+16     0  0  0  0  0  0
+17     0  0  0  0  0  0
+18     0  0  0  0  0  0
+19     0  0  0  0  0  0
+
+-----------------------------------------------------------------------
+Provide materials
+First line: Total number of materials
+Following lines: Material ID, Elasticity [MPa], Poisson Ratio, Thermal exp. coeff. [/oC]
+%MATERIAL.ISOTROPIC
+1
+1     100000  3.000000e-01  1.000000e-05
+
+-----------------------------------------------------------------------
+Provide cross-sections
+First line: Total number of cross-sections
+Following lines: Cross-section ID, Area_x [cm2], Area_y [cm2], Area_z [cm2]
+                 Inertia_x [cm4], Inertia_y [cm4], Inertia_z [cm4]
+                 Height_y [cm], Height_z [cm]
+%SECTION.PROPERTY
+1
+1     100  10000  10000  100000000  100000000  100000000  10  100
+
+-----------------------------------------------------------------------
+Flag specification for different beam end liberation conditions
+1 - Continuous end / Continuous end
+2 - Hinged end / Continuous end
+3 - Continuous end / Hinged end
+4 - Hinged end / Hinged end
+%BEAM.END.LIBERATION
+4
+1     1  1  1  1  1  1  1  1  1  1  1  1
+2     1  1  1  1  1  0  1  1  1  1  1  1
+3     1  1  1  1  1  1  1  1  1  1  1  0
+4     1  1  1  1  1  0  1  1  1  1  1  0
+
+-----------------------------------------------------------------------
+Provide elements
+First line: Total number of elements
+Following lines: Element ID, Material ID, Cross-section ID, End lib. flag,
+                 Init. Node ID, Final Node ID, vz_X, vz_Y, vz_Z
+%ELEMENT.BEAM.NAVIER
+35
+1     1  1  4  1  3  0  0  1
+2     1  1  4  3  5  0  0  1
+3     1  1  4  5  7  0  0  1
+4     1  1  4  7  9  0  0  1
+5     1  1  4  2  4  0  0  1
+6     1  1  4  4  6  0  0  1
+7     1  1  4  6  8  0  0  1
+8     1  1  4  8  9  0  0  1
+9     1  1  4  12  14  0  0  1
+10     1  1  4  14  16  0  0  1
+11     1  1  4  16  18  0  0  1
+12     1  1  4  18  9  0  0  1
+13     1  1  4  13  15  0  0  1
+14     1  1  4  15  17  0  0  1
+15     1  1  4  17  19  0  0  1
+16     1  1  4  19  9  0  0  1
+17     1  1  4  12  10  0  0  1
+18     1  1  4  10  1  0  0  1
+19     1  1  4  1  2  0  0  1
+20     1  1  4  2  11  0  0  1
+21     1  1  4  11  13  0  0  1
+22     1  1  4  14  3  0  0  1
+23     1  1  4  4  15  0  0  1
+24     1  1  4  16  5  0  0  1
+25     1  1  4  6  17  0  0  1
+26     1  1  4  18  7  0  0  1
+27     1  1  4  8  19  0  0  1
+28     1  1  4  10  14  0  0  1
+29     1  1  4  1  14  0  0  1
+30     1  1  4  3  16  0  0  1
+31     1  1  4  5  18  0  0  1
+32     1  1  4  11  15  0  0  1
+33     1  1  4  2  15  0  0  1
+34     1  1  4  4  17  0  0  1
+35     1  1  4  6  19  0  0  1
+
+-----------------------------------------------------------------------
+Specify applied nodal loads
+First line: Total number of nodes with applied load
+Following lines: Node ID, fX [kN], fY [kN], fZ [kN], mX [kNm], mY [kNm], mZ [kNm]
+%LOAD.CASE.NODAL.FORCE
+3
+9     0  -40  0  0  0  0
+14     10  0  0  0  0  0
+15     -10  0  0  0  0  0
+
+%END

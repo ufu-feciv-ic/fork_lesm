@@ -1,0 +1,99 @@
+NEUTRAL-FORMAT FILE
+This file stores all information about a structure model that can be read and
+loaded by the LESM (Linear Elements Structure Model) program.
+To modify the model, edit only the data below the %TAGS
+
+-----------------------------------------------------------------------
+Specify version number: 'X.X'
+%HEADER.VERSION
+1.1
+
+-----------------------------------------------------------------------
+Specify analysis model type: 'TRUSS2D', 'FRAME2D', 'Grillage', 'TRUSS3D' OR 'FRAME3D'
+%HEADER.ANALYSIS
+'FRAME2D'
+
+-----------------------------------------------------------------------
+Provide nodal coordinates
+First line: Total number of nodes
+Following lines: Node ID, coord_X [m], coord_Y [m], coord_Z [m]
+%NODE.COORD
+6
+1     0  5  0
+2     10  5  0
+3     0  0  0
+4     10  0  0
+5     0  -5  0
+6     10  -5  0
+
+-----------------------------------------------------------------------
+Specify essential boundary conditions (support conditions)
+First line: Total number of nodes
+Following lines: Node ID, ebc_dX, ebc_dY, ebc_dZ, ebc_rX, ebc_rY, ebc_rZ
+ebc = 0 --> Free degree-of-freedom
+ebc = 1 --> Fixed degree-of-freedom
+%NODE.SUPPORT
+6
+1     1  1  0  0  0  1
+2     1  1  0  0  0  1
+3     1  1  0  0  0  1
+4     0  1  0  0  0  0
+5     1  1  0  0  0  0
+6     0  1  0  0  0  0
+
+-----------------------------------------------------------------------
+Provide materials
+First line: Total number of materials
+Following lines: Material ID, Elasticity [MPa], Poisson Ratio, Thermal exp. coeff. [/oC]
+%MATERIAL.ISOTROPIC
+1
+1     100000  3.000000e-01  1.000000e-05
+
+-----------------------------------------------------------------------
+Provide cross-sections
+First line: Total number of cross-sections
+Following lines: Cross-section ID, Area_x [cm2], Area_y [cm2], Area_z [cm2]
+                 Inertia_x [cm4], Inertia_y [cm4], Inertia_z [cm4]
+                 Height_y [cm], Height_z [cm]
+%SECTION.PROPERTY
+1
+1     100  100  10000  100000000  100000000  1.000000e+03  10  100
+
+-----------------------------------------------------------------------
+Flag specification for different beam end liberation conditions
+1 - Continuous end / Continuous end
+2 - Hinged end / Continuous end
+3 - Continuous end / Hinged end
+4 - Hinged end / Hinged end
+%BEAM.END.LIBERATION
+4
+1     1  1  1  1  1  1  1  1  1  1  1  1
+2     1  1  1  1  1  0  1  1  1  1  1  1
+3     1  1  1  1  1  1  1  1  1  1  1  0
+4     1  1  1  1  1  0  1  1  1  1  1  0
+
+-----------------------------------------------------------------------
+Provide elements
+First line: Total number of elements
+Following lines: Element ID, Material ID, Cross-section ID, End lib. flag,
+                 Init. Node ID, Final Node ID
+%ELEMENT.BEAM.TIMOSHENKO
+3
+1     1  1  1  1  2  0  0  1
+2     1  1  1  3  4  0  0  1
+3     1  1  1  5  6  0  0  1
+
+-----------------------------------------------------------------------
+Specify element thermal loads
+First line: Total number of elements with thermal load
+Following lines: Element ID, dt_x [oC], dt_y [oC], dt_z [oC]
+dt_x       --> element temperature variation on its center of gravity line
+dt_y, dt_z --> element temperature variation relative to local axes Y and Z
+               (bottomFaceTempVar - topFaceTempVar)
+%LOAD.CASE.BEAM.TEMPERATURE
+3
+1     0  -20  0
+2     0  -20  0
+3     0  -20  0
+
+%END

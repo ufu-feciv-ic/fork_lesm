@@ -1,0 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thank you for downloading the nongraphical version of the LESM program!
+
+To use this version of the program, you must open the main.m file.
+
+In line 339 of that script, it is necessary to provide the name and the relative
+path of the file you want to run as a string variable called 'fileName'.
+It is important that the target file is in the same directory of the source code,
+or in a sub-folder.
+
+To process data and get the results, you must run the script (shortcut F5).
+If a valid file is selected, the analysis results should appear on the MATLAB
+command window.
+
+Some sample files are provided in the folder 'Models'.
+
+In case of any questions or malfunction of the program, please feel free to
+contact the authors.
+
+https://web.tecgraf.puc-rio.br/lesm/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

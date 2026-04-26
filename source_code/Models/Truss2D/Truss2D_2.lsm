@@ -1,0 +1,106 @@
+NEUTRAL-FORMAT FILE
+This file stores all information about a structure model that can be read and
+loaded by the LESM (Linear Elements Structure Model) program.
+To modify the model, edit only the data below the %TAGS
+
+-----------------------------------------------------------------------
+Specify version number: 'X.X'
+%HEADER.VERSION
+1.1
+
+-----------------------------------------------------------------------
+Specify analysis model type: 'TRUSS2D', 'FRAME2D', 'Grillage', 'TRUSS3D' OR 'FRAME3D'
+%HEADER.ANALYSIS
+'TRUSS2D'
+
+-----------------------------------------------------------------------
+Provide nodal coordinates
+First line: Total number of nodes
+Following lines: Node ID, coord_X [m], coord_Y [m], coord_Z [m]
+%NODE.COORD
+7
+1     0  0  0
+2     2  0  0
+3     4  0  0
+4     6  0  0
+5     1  2  0
+6     3  2  0
+7     5  2  0
+
+-----------------------------------------------------------------------
+Specify essential boundary conditions (support conditions)
+First line: Total number of nodes
+Following lines: Node ID, ebc_dX, ebc_dY, ebc_dZ, ebc_rX, ebc_rY, ebc_rZ
+ebc = 0 --> Free degree-of-freedom
+ebc = 1 --> Fixed degree-of-freedom
+%NODE.SUPPORT
+7
+1     1  1  0  0  0  0
+2     0  0  0  0  0  0
+3     0  0  0  0  0  0
+4     0  1  0  0  0  0
+5     0  0  0  0  0  0
+6     0  0  0  0  0  0
+7     0  0  0  0  0  0
+
+-----------------------------------------------------------------------
+Provide materials
+First line: Total number of materials
+Following lines: Material ID, Elasticity [MPa], Poisson Ratio, Thermal exp. coeff. [/oC]
+%MATERIAL.ISOTROPIC
+1
+1     50000  3.000000e-01  1.000000e-05
+
+-----------------------------------------------------------------------
+Provide cross-sections
+First line: Total number of cross-sections
+Following lines: Cross-section ID, Area_x [cm2], Area_y [cm2], Area_z [cm2]
+                 Inertia_x [cm4], Inertia_y [cm4], Inertia_z [cm4]
+                 Height_y [cm], Height_z [cm]
+%SECTION.PROPERTY
+1
+1     50  10000  10000  100000000  100000000  100000000  10  100
+
+-----------------------------------------------------------------------
+Flag specification for different beam end liberation conditions
+1 - Continuous end / Continuous end
+2 - Hinged end / Continuous end
+3 - Continuous end / Hinged end
+4 - Hinged end / Hinged end
+%BEAM.END.LIBERATION
+4
+1     1  1  1  1  1  1  1  1  1  1  1  1
+2     1  1  1  1  1  0  1  1  1  1  1  1
+3     1  1  1  1  1  1  1  1  1  1  1  0
+4     1  1  1  1  1  0  1  1  1  1  1  0
+
+-----------------------------------------------------------------------
+Provide elements
+First line: Total number of elements
+Following lines: Element ID, Material ID, Cross-section ID, End lib. flag,
+                 Init. Node ID, Final Node ID, vz_X, vz_Y, vz_Z
+%ELEMENT.BEAM.NAVIER
+11
+1     1  1  4  1  2  0  0  1
+2     1  1  4  2  3  0  0  1
+3     1  1  4  3  4  0  0  1
+4     1  1  4  1  5  0  0  1
+5     1  1  4  5  2  0  0  1
+6     1  1  4  2  6  0  0  1
+7     1  1  4  6  3  0  0  1
+8     1  1  4  3  7  0  0  1
+9     1  1  4  7  4  0  0  1
+10     1  1  4  5  6  0  0  1
+11     1  1  4  6  7  0  0  1
+
+-----------------------------------------------------------------------
+Specify applied nodal loads
+First line: Total number of nodes with applied load
+Following lines: Node ID, fX [kN], fY [kN], fZ [kN], mX [kNm], mY [kNm], mZ [kNm]
+%LOAD.CASE.NODAL.FORCE
+3
+5     20  -20  0  0  0  0
+6     0  -40  0  0  0  0
+7     0  -20  0  0  0  0
+
+%END
